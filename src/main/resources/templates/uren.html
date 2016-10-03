@@ -31,7 +31,7 @@
             <a class="navbar-brand" href="#">Uren verantwoording</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
-            <form class="navbar-form navbar-right">
+            <!--<form class="navbar-form navbar-right">
                 <div class="form-group">
                     <input type="text" placeholder="Email" class="form-control"/>
                 </div>
@@ -39,149 +39,132 @@
                     <input type="password" placeholder="Password" class="form-control"/>
                 </div>
                 <button type="submit" class="btn btn-success">Sign in</button>
-            </form>
+            </form>-->
         </div><!--/.navbar-collapse -->
     </div>
 </nav>
 <!-- Main jumbotron for a primary marketing message or call to action -->
 <div class="jumbotron">
     <div class="container">
-        <h1>Urenverantwoordig</h1>
+        <h1>Uren verantwoording</h1>
         <p>This is a template for a simple marketing or informational website. It includes a large callout called a
             jumbotron and three supporting pieces of content. Use it as a starting point to create something more
             unique.</p>
-        <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
     </div>
 </div>
-<section id="uren">
-    <div>
-        <div class="container">
-            <!--/*@thymesVar id="verantwoordingsData" type="nl.atos.ps.noord.testapp.urenverantwoording"*/-->
-            <form action="#" th:action="@{/}" th:object="${verantwoordingsData}" method="post">
-                <div class="input-group">
-                    <span class="input-group-addon" id="gebruikersnaam">Naam</span>
-                    <input type="text" th:field="*{name}" th:value="${name}" class="form-control"
-                           placeholder="gebruikersnaam"
-                           aria-describedby="gebruikersnaam" required="required"/>
-                </div>
-                <br/>
-                <div class="input-group">
-                    <span class="input-group-addon" id="week">Week</span>
-                    <input type="number" class="form-control" placeholder="week"
-                           aria-describedby="week"
-                           required="required"/>
-                </div>
-                <br/>
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                    <h1 class="text-muted">Uren verantwoording</h1>
-                </div>
-                <div class="row">
-                    <div class="form-group">
-                        <div class="col-md-1">
-                            <p class="text-info">Maandag</p>
-                            <input type="number" th:field="*{maandag}" th:value="*{maandag}" name="monday" id="maandag"
-                                   class="form-control"
-                                   value=""
-                                   title="maandag"/>
-                            <!--required="required" placeholder="8"-->
-                            <input th:if="${#fields.hasErrors('maandag')}" th:errors="*{maandag}">Age Error</input>
-                        </div>
+<div class="container">
+    <section id="uren">
+        <div class="row">
+            <div class="col-lg-12">
+                <!--/*@thymesVar id="verantwoordingsData" type="nl.atos.ps.noord.testapp.urenverantwoording"*/-->
+                <form action="#" th:action="@{/}" th:object="${verantwoordingsData}" method="post">
+                    <div class="input-group">
+                        <span class="input-group-addon" id="gebruikersnaam">Naam</span>
+                        <input type="text" th:field="*{name}" class="form-control"
+                               placeholder="gebruikersnaam"
+                               aria-describedby="gebruikersnaam" required="required"/>
                     </div>
-                    <div class="form-group">
-                        <div class="col-md-1">
-                            <p class="text-info">Dinsdag</p>
-                            <input type="number" th:field="*{dinsdag}" name="dindag" id="dinsdag" class="form-control"
-                                   value=""
-                                   title="dinsdag"/>
-                            <!--required="required" placeholder="8"-->
-                            <p th:if="${#fields.hasErrors('dinsdag')}" th:errors="*{dinsdag}">Age Error</p>
-                        </div>
+                    <p class="bg-danger" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Week Error</p>
+                    <br/>
+                    <div class="input-group">
+                        <span class="input-group-addon" id="week">Week</span>
+                        <input type="number" th:field="*{weeknumber}" class="form-control" placeholder="week"
+                               aria-describedby="week"
+                               required="required"/>
                     </div>
-                    <div class="form-group">
-                        <div class="col-md-1">
-                            <p class="text-info">Woensdag</p>
-                            <input type="number" th:field="*{woensdag}" name="woensdag" id="woensdag"
-                                   class="form-control" value=""
-                                   title="woensdag"/>
-                            <!--required="required" placeholder="8">-->
-                            <p th:if="${#fields.hasErrors('woensdag')}" th:errors="*{woensdag}">Age Error</p>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-md-1">
-                            <p class="text-info">Donderdag</p>
-                            <input type="number" th:field="*{donderdag}" name="donderdag" id="donderdag"
-                                   class="form-control" value=""
-                                   title="donderdag"/>
-                            <!-- required="required" placeholder="8">-->
-                            <p th:if="${#fields.hasErrors('donderdag')}" th:errors="*{donderdag}">Age Error</p>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-md-1">
-                            <p class="text-info">Vrijdag</p>
-                            <input type="number" th:field="*{vrijdag}" name="vrijdag" id="vrijdag" class="form-control"
-                                   value=""
-                                   title="vrijdag"/>
-                            <!--required="required" placeholder="8">-->
-                            <p th:if="${#fields.hasErrors('vrijdag')}" th:errors="*{vrijdag}">Age Error</p>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-md-1">
-                            <p class="text-info">Zaterdag</p>
-                            <input type="number" th:field="*{zaterdag}" name="zaterdag" id="zaterdag"
-                                   class="form-control" value=""
-                                   title="zaterdag"/>
-                            <!--required="required" placeholder="0">-->
-                            <p th:if="${#fields.hasErrors('zaterdag')}" th:errors="*{zaterdag}">Age Error</p>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-md-1">
-                            <p class="text-info">Zondag</p>
-                            <input type="number" th:field="*{zondag}" name="zondag" id="zondag" class="form-control"
-                                   value="" title="zondag"/>
-                            <!--required="required" placeholder="0">-->
-                            <p th:if="${#fields.hasErrors('zondag')}" th:errors="*{zondag}">Age Error</p>
-                        </div>
+                    <p class="bg-danger" th:if="${#fields.hasErrors('weeknumber')}" th:errors="*{weeknumber}">Week Error</p>
+                    <br/>
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <h1 class="text-muted">Uren verantwoording</h1>
                     </div>
                     <div class="row">
-                        <div class="col-sm-offset-1 col-sm-4">
-                            <button type="submit" class="btn btn-primary btn-lg">Indienen</button>
-                            <button type="button" class="btn btn-info btn-lg"
-                                    data-toggle="modal" data-target="#myModal">Overzicht
-                            </button>
-                        </div>
-                    </div>
-                    <div class="modal fade" id="urenModal" tabindex="-1" role="dialog"
-                         aria-labelledby="urenVertegenwoordiging">
-                        <div class="modal-dialog modal-lg" role="document">
-                            <h4 class="modal-title">Uren vertegenwoordiging</h4>
-                            <!--/*@thymesVar id="modalData" type="nl.atos.ps.noord.testapp"*/-->
-                            <div class="modal-content" th:object="${modalData}">
-                                <h4>Uw naam: <span th:text="${name}">no name</span></h4>
-                                <br/>
-                                <p>maandag: <span th:text="${maandag}">no hours</span></p>
-                                <p>dinsdag: <span th:text="${dinsdag}">no hours</span></p>
-                                <p>woensdag: <span th:text="${woensdag}">no hours</span></p>
-                                <p>donderdag: <span th:text="${donderdag}">no hours</span></p>
-                                <p>vrijdag: <span th:text="${vrijdag}">no hours</span></p>
-                                <p>zaterdag: <span th:text="${zaterdag}">no hours</span></p>
-                                <p>zondag: <span th:text="${zondag}">no hours</span></p>
-
+                        <div class="form-group">
+                            <div class="col-md-1">
+                                <p class="text-info">Maandag</p>
+                                <input type="number" th:field="*{maandag}" th:value="*{maandag}" name="monday"
+                                       id="maandag"
+                                       class="form-control"
+                                       value=""
+                                       title="maandag"/>
+                                <!--required="required" placeholder="8"-->
+                                <input th:if="${#fields.hasErrors('maandag')}" th:errors="*{maandag}">Age Error</input>
                             </div>
                         </div>
-                    </div>
-                    <!-- Modal -->
-                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                    <h4 class="modal-title" id="myModalLabel">Modal title</h4>
-                                </div>
-                                <div class="modal-body" th:object="${modalData}">
+                        <div class="form-group">
+                            <div class="col-md-1">
+                                <p class="text-info">Dinsdag</p>
+                                <input type="number" th:field="*{dinsdag}" name="dindag" id="dinsdag"
+                                       class="form-control"
+                                       value=""
+                                       title="dinsdag"/>
+                                <!--required="required" placeholder="8"-->
+                                <p th:if="${#fields.hasErrors('dinsdag')}" th:errors="*{dinsdag}">Age Error</p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-1">
+                                <p class="text-info">Woensdag</p>
+                                <input type="number" th:field="*{woensdag}" name="woensdag" id="woensdag"
+                                       class="form-control" value=""
+                                       title="woensdag"/>
+                                <!--required="required" placeholder="8">-->
+                                <p th:if="${#fields.hasErrors('woensdag')}" th:errors="*{woensdag}">Age Error</p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-1">
+                                <p class="text-info">Donderdag</p>
+                                <input type="number" th:field="*{donderdag}" name="donderdag" id="donderdag"
+                                       class="form-control" value=""
+                                       title="donderdag"/>
+                                <!-- required="required" placeholder="8">-->
+                                <p th:if="${#fields.hasErrors('donderdag')}" th:errors="*{donderdag}">Age Error</p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-1">
+                                <p class="text-info">Vrijdag</p>
+                                <input type="number" th:field="*{vrijdag}" name="vrijdag" id="vrijdag"
+                                       class="form-control"
+                                       value=""
+                                       title="vrijdag"/>
+                                <!--required="required" placeholder="8">-->
+                                <p th:if="${#fields.hasErrors('vrijdag')}" th:errors="*{vrijdag}">Age Error</p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-1">
+                                <p class="text-info">Zaterdag</p>
+                                <input type="number" th:field="*{zaterdag}" name="zaterdag" id="zaterdag"
+                                       class="form-control" value=""
+                                       title="zaterdag"/>
+                                <!--required="required" placeholder="0">-->
+                                <p th:if="${#fields.hasErrors('zaterdag')}" th:errors="*{zaterdag}">Age Error</p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-1">
+                                <p class="text-info">Zondag</p>
+                                <input type="number" th:field="*{zondag}" name="zondag" id="zondag" class="form-control"
+                                       value="" title="zondag"/>
+                                <!--required="required" placeholder="0">-->
+                                <p th:if="${#fields.hasErrors('zondag')}" th:errors="*{zondag}">Age Error</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-offset-1 col-sm-4">
+                                <button type="submit" class="btn btn-primary btn-lg">Indienen</button>
+                                <button type="button" class="btn btn-info btn-lg"
+                                        data-toggle="modal" data-target="#myModal">Overzicht
+                                </button>
+                            </div>
+                        </div>
+                        <div class="modal fade" id="urenModal" tabindex="-1" role="dialog"
+                             aria-labelledby="urenVertegenwoordiging">
+                            <div class="modal-dialog modal-lg" role="document">
+                                <h4 class="modal-title">Uren vertegenwoordiging</h4>
+                                <!--/*@thymesVar id="modalData" type="nl.atos.ps.noord.testapp"*/-->
+                                <div class="modal-content" th:object="${modalData}">
                                     <h4>Uw naam: <span th:text="${name}">no name</span></h4>
                                     <br/>
                                     <p>maandag: <span th:text="${maandag}">no hours</span></p>
@@ -191,20 +174,99 @@
                                     <p>vrijdag: <span th:text="${vrijdag}">no hours</span></p>
                                     <p>zaterdag: <span th:text="${zaterdag}">no hours</span></p>
                                     <p>zondag: <span th:text="${zondag}">no hours</span></p>
+
                                 </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-primary">Save changes</button>
+                            </div>
+                        </div>
+                        <!-- Modal -->
+                        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal"
+                                                aria-label="Close"><span
+                                                aria-hidden="true">&times;</span></button>
+                                        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                                    </div>
+                                    <div class="modal-body" th:object="${modalData}">
+                                        <h4>Uw naam: <span th:text="${name}">no name</span></h4>
+                                        <h4>Week nummer: <span th:text="${weeknumber}">no week</span></h4>
+                                        <br/>
+                                        <p>maandag: <span th:text="${maandag}">no hours</span></p>
+                                        <p>dinsdag: <span th:text="${dinsdag}">no hours</span></p>
+                                        <p>woensdag: <span th:text="${woensdag}">no hours</span></p>
+                                        <p>donderdag: <span th:text="${donderdag}">no hours</span></p>
+                                        <p>vrijdag: <span th:text="${vrijdag}">no hours</span></p>
+                                        <p>zaterdag: <span th:text="${zaterdag}">no hours</span></p>
+                                        <p>zondag: <span th:text="${zondag}">no hours</span></p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close
+                                        </button>
+                                        <!--<button type="button" class="btn btn-primary">Save changes</button>-->
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </form>
+                </form>
+            </div>
         </div>
-    </div>
-</section>
-
+    </section>
+    <br/>
+    <section id="rapportage">
+        <div class="row">
+            <div class="col-lg-12">
+                <table class="table table-hover">
+                    <thead>
+                    <th>Naam: <span th:text="${name}">no name</span></th>
+                    <th>Week nr: <span th:text="${weeknumber}">no week</span></th>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>Maandag</td>
+                        <td><span th:text="${maandag}">no hours</span></td>
+                    </tr>
+                    <tr>
+                        <td>Dinsdag</td>
+                        <td><span th:text="${dinsdag}">no hours</span></td>
+                    </tr>
+                    <tr>
+                        <td>Woensdag</td>
+                        <td><span th:text="${woensdag}">no hours</span></td>
+                    </tr>
+                    <tr>
+                        <td>Donderdag</td>
+                        <td><span th:text="${donderdag}">no hours</span></td>
+                    </tr>
+                    <tr>
+                        <td>Vrijdag</td>
+                        <td><span th:text="${vrijdag}">no hours</span></td>
+                    </tr>
+                    <tr>
+                        <td>Zaterdag</td>
+                        <td><span th:text="${zaterdag}">no hours</span></td>
+                    </tr>
+                    <tr>
+                        <td>Zondag</td>
+                        <td><span th:text="${zondag}">no hours</span></td>
+                    </tr>
+                    </tbody>
+                    <tfoot>
+                    <tr>
+                        <td>Lunch</td>
+                        <td><span th:text="${lunch}">no hours</span></td>
+                    </tr>
+                    <tr>
+                        <td>Overwerken</td>
+                        <td><span th:text="${overwerken}">no hours</span></td>
+                    </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </section>
+</div>
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
