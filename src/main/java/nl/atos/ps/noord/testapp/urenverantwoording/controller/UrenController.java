@@ -104,7 +104,7 @@ public class UrenController {
         final Integer[] total = {0};
         int result = 0;
         map.forEach((k, v) -> {
-            total[0] += total[0] + v;
+            total[0] = total[0] + v;
         });
         System.out.println(total[0]);
         if (total[0] > 40) {
