@@ -1,4 +1,4 @@
-package nl.atos.ps.noord.testapp.urenverantwoording;
+package nl.atos.ps.noord.testapp.urenverantwoording.pojo;
 
 import javax.validation.constraints.*;
 

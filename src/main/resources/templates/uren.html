@@ -72,7 +72,8 @@
                                aria-describedby="week"
                                required="required"/>
                     </div>
-                    <p class="bg-danger" th:if="${#fields.hasErrors('weeknumber')}" th:errors="*{weeknumber}">Week Error</p>
+                    <p class="bg-danger" th:if="${#fields.hasErrors('weeknumber')}" th:errors="*{weeknumber}">Week
+                        Error</p>
                     <br/>
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                         <h1 class="text-muted">Uren verantwoording</h1>
@@ -222,6 +223,20 @@
                     <th>Naam: <span th:text="${name}">no name</span></th>
                     <th>Week nr: <span th:text="${weeknumber}">no week</span></th>
                     </thead>
+                    <tfoot>
+                    <tr>
+                        <td><strong>Lunch vergoeding</strong></td>
+                        <td><span th:text="${lunch}">no lunch value</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Overgewerkte uren</strong></td>
+                        <td><span th:text="${overwerken}">no overwork hours</span></td>
+                    </tr>
+                    <tr class="info">
+                        <td><strong>Totale kosten</strong></td>
+                        <td><span th:text="${kosten}">no total costs</span></td>
+                    </tr>
+                    </tfoot>
                     <tbody>
                     <tr>
                         <td>Maandag</td>
@@ -252,16 +267,6 @@
                         <td><span th:text="${zondag}">no hours</span></td>
                     </tr>
                     </tbody>
-                    <tfoot>
-                    <tr>
-                        <td>Lunch</td>
-                        <td><span th:text="${lunch}">no hours</span></td>
-                    </tr>
-                    <tr>
-                        <td>Overwerken</td>
-                        <td><span th:text="${overwerken}">no hours</span></td>
-                    </tr>
-                    </tfoot>
                 </table>
             </div>
         </div>

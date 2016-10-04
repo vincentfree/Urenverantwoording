@@ -1,6 +1,7 @@
 package nl.atos.ps.noord.testapp.urenverantwoording.controller;
 
-import nl.atos.ps.noord.testapp.urenverantwoording.VerantwoordingsData;
+import nl.atos.ps.noord.testapp.urenverantwoording.pojo.VerantwoordingsData;
+import nl.atos.ps.noord.testapp.urenverantwoording.pojo.WeeklyExtras;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -9,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 
 import javax.validation.Valid;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by Vincent Free on 3-8-2016.
@@ -22,40 +25,23 @@ public class UrenController {
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String getVerantwoordingsData(VerantwoordingsData verantwoordingsData, BindingResult bindingResult, Model model) {
-
-        int lunchMoney = 0;
-        int overWorkHours = 0;
-
+        Map<String, Integer> week = new HashMap<>();
+        WeeklyExtras extras = new WeeklyExtras();
         if (myData != null) {
+            weekMap(week, myData);
             verantwoordingsData = myData;
+            week.forEach(model::addAttribute);
+            week.forEach((k, v) -> extras.addUpLunchMoney(calculateLunchValue(v)));
+            week.forEach((k, v) -> extras.addUpOverWorkHours(overWorkHours(v)));
+            extras.setExidedHours(exidedHours(week));
             model.addAttribute("modalData", verantwoordingsData);
             model.addAttribute("verantwoordingsData", verantwoordingsData);
-            model.addAttribute("maandag", verantwoordingsData.getMaandag());
-            lunchMoney += calculateLunchValue(verantwoordingsData.getMaandag());
-            overWorkHours += overWorkHours(verantwoordingsData.getMaandag());
-            model.addAttribute("dinsdag", verantwoordingsData.getDinsdag());
-            lunchMoney += calculateLunchValue(verantwoordingsData.getDinsdag());
-            overWorkHours += overWorkHours(verantwoordingsData.getDinsdag());
-            model.addAttribute("woensdag", verantwoordingsData.getWoensdag());
-            lunchMoney += calculateLunchValue(verantwoordingsData.getWoensdag());
-            overWorkHours += overWorkHours(verantwoordingsData.getWoensdag());
-            model.addAttribute("donderdag", verantwoordingsData.getDonderdag());
-            lunchMoney += calculateLunchValue(verantwoordingsData.getDonderdag());
-            overWorkHours += overWorkHours(verantwoordingsData.getDonderdag());
-            model.addAttribute("vrijdag", verantwoordingsData.getVrijdag());
-            lunchMoney += calculateLunchValue(verantwoordingsData.getVrijdag());
-            overWorkHours += overWorkHours(verantwoordingsData.getVrijdag());
-            model.addAttribute("zaterdag", verantwoordingsData.getZaterdag());
-            lunchMoney += calculateLunchValue(verantwoordingsData.getZaterdag());
-            overWorkHours += overWorkHours(verantwoordingsData.getZaterdag());
-            model.addAttribute("zondag", verantwoordingsData.getZondag());
-            lunchMoney += calculateLunchValue(verantwoordingsData.getZondag());
-            overWorkHours += overWorkHours(verantwoordingsData.getZondag());
-            myData.setLunch(lunchMoney);
             model.addAttribute("name", verantwoordingsData.getName());
             model.addAttribute("weeknumber", verantwoordingsData.getWeeknumber());
-            model.addAttribute("lunch", lunchMoney);
-            model.addAttribute("overwerken", overWorkHours);
+            model.addAttribute("lunch", extras.getLunchMoney());
+            model.addAttribute("overwerken", extras.getOverWorkHours());
+            //TODO weekend uren toevoegen aan vergoeding
+            model.addAttribute("totaal", (extras.overworkCosts() + extras.getLunchMoney()));
 
         } else {
             model.addAttribute("maandag", verantwoordingsData.getMaandag());
@@ -113,4 +99,28 @@ public class UrenController {
         }
         return 0;
     }
+
+    private int exidedHours(Map<String, Integer> map) {
+        final Integer[] total = {0};
+        int result = 0;
+        map.forEach((k, v) -> {
+            total[0] += total[0] + v;
+        });
+        if (total[0] > 40) {
+            result = (total[0] - 40);
+        }
+        return result;
+    }
+
+    private void weekMap(Map<String, Integer> map, VerantwoordingsData data) {
+        map.put("maandag", data.getMaandag());
+        map.put("dinsdag", data.getDinsdag());
+        map.put("woensdag", data.getWoensdag());
+        map.put("donderdag", data.getDonderdag());
+        map.put("vrijdag", data.getVrijdag());
+        map.put("zaterdag", data.getZaterdag());
+        map.put("zondag", data.getZondag());
+    }
+
+
 }
