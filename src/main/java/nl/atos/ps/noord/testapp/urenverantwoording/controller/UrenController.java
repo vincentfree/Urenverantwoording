@@ -31,17 +31,19 @@ public class UrenController {
             weekMap(week, myData);
             verantwoordingsData = myData;
             week.forEach(model::addAttribute);
-            week.forEach((k, v) -> extras.addUpLunchMoney(calculateLunchValue(v)));
-            week.forEach((k, v) -> extras.addUpOverWorkHours(overWorkHours(v)));
+            week.forEach((k, v) -> extras.addUpLunchMoney(calculateLunchValue(k, v)));
+            week.forEach((k, v) -> extras.addUpOverWorkHours(v));
+            //week.forEach((k, v) -> extras.addUpOverWorkHours(overWorkHours(v)));
             extras.setExidedHours(exidedHours(week));
             model.addAttribute("modalData", verantwoordingsData);
             model.addAttribute("verantwoordingsData", verantwoordingsData);
             model.addAttribute("name", verantwoordingsData.getName());
             model.addAttribute("weeknumber", verantwoordingsData.getWeeknumber());
+            model.addAttribute("schaal", verantwoordingsData.getSchaal());
             model.addAttribute("lunch", extras.getLunchMoney());
             model.addAttribute("overwerken", extras.getOverWorkHours());
             //TODO weekend uren toevoegen aan vergoeding
-            model.addAttribute("totaal", (extras.overworkCosts() + extras.getLunchMoney()));
+            getTotalCosts(verantwoordingsData, model, extras);
 
         } else {
             model.addAttribute("maandag", verantwoordingsData.getMaandag());
@@ -53,8 +55,18 @@ public class UrenController {
             model.addAttribute("zondag", verantwoordingsData.getZondag());
             model.addAttribute("name", verantwoordingsData.getName());
             model.addAttribute("weeknumber", verantwoordingsData.getWeeknumber());
+            model.addAttribute("schaal", verantwoordingsData.getSchaal());
+
         }
         return "uren";
+    }
+
+    private void getTotalCosts(VerantwoordingsData verantwoordingsData, Model model, WeeklyExtras extras) {
+        if (verantwoordingsData.getSchaal() < 18) {
+            model.addAttribute("totaal", (extras.overworkCosts() + extras.getLunchMoney()));
+        } else {
+            model.addAttribute("totaal", 0);
+        }
     }
 
     @RequestMapping(value = "/results", method = RequestMethod.GET)
@@ -80,14 +92,17 @@ public class UrenController {
         model.addAttribute("zondag", verantwoordingsData.getZondag());
         model.addAttribute("name", verantwoordingsData.getName());
         model.addAttribute("weeknumber", verantwoordingsData.getWeeknumber());
+        model.addAttribute("schaal", verantwoordingsData.getSchaal());
 
         return "redirect:/";
 
         //return "result";//+verantwoordingsData.getDinsdag();
     }
 
-    private int calculateLunchValue(int value) {
-        if (value >= 12) {
+    private int calculateLunchValue(String day, int value) {
+        if (value > 12) {
+            return 15;
+        } else if ((day.equals("zaterdag") || day.equals("zondag")) && value > 0) {
             return 15;
         }
         return 0;
@@ -103,11 +118,10 @@ public class UrenController {
     private int exidedHours(Map<String, Integer> map) {
         final Integer[] total = {0};
         int result = 0;
-        map.forEach((k, v) -> {
-            total[0] = total[0] + v;
-        });
+        map.forEach((k, v) -> total[0] = total[0] + v);
         System.out.println(total[0]);
-        if (total[0] > 40) {
+        //check if it's ok to set 45 here
+        if (total[0] > 45) {
             result = (total[0] - 40);
         }
         return result;

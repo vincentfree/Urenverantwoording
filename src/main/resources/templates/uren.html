@@ -75,7 +75,17 @@
                                aria-describedby="week"
                                required="required"/>
                     </div>
+
                     <p class="bg-danger" th:if="${#fields.hasErrors('weeknumber')}" th:errors="*{weeknumber}">Week
+                        Error</p>
+                    <br/>
+                    <div class="input-group">
+                        <span class="input-group-addon" id="week">Schaal</span>
+                        <input type="number" th:field="*{schaal}" class="form-control" placeholder="schaal"
+                               aria-describedby="schaal"
+                               required="required"/>
+                    </div>
+                    <p class="bg-danger" th:if="${#fields.hasErrors('schaal')}" th:errors="*{schaal}">Schaal
                         Error</p>
                     <br/>
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -267,6 +277,10 @@
                     </tr>
                     <tr>
                         <td>Zondag</td>
+                        <td><span th:text="${zondag}">no hours</span></td>
+                    </tr>
+                    <tr>
+                        <td>Totale uren</td>
                         <td><span th:text="${zondag}">no hours</span></td>
                     </tr>
                     </tbody>
