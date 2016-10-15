@@ -22,7 +22,9 @@ public class WeeklyExtras {
     }
 
     public int getOverWorkHours() {
-        return overWorkHours;
+        if (overWorkHours>40)
+        return overWorkHours-40;
+        else return 0;
     }
 
     public void setOverWorkHours(int overWorkHours) {
@@ -40,7 +42,20 @@ public class WeeklyExtras {
     public void setExidedHours(int exidedHours) {
         this.exidedHours = exidedHours;
     }
+
     public int overworkCosts() {
-        return (getExidedHours()*30);
+        return (getHoursAboveQuota() * 30);
+    }
+
+    /**
+     *
+     * @return
+     */
+    public int getHoursAboveQuota() {
+        if (exidedHours > 5) {
+            return exidedHours - 5;
+        } else {
+            return 0;
+        }
     }
 }

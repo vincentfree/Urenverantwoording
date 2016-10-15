@@ -22,6 +22,7 @@ public class VerantwoordingsData {
     private int zondag;
     private int lunch;
     private int overwerken;
+    private int schaal;
 
 
     //@NotNull
@@ -119,5 +120,13 @@ public class VerantwoordingsData {
 
     public void setOverwerken(int overwerken) {
         this.overwerken = overwerken;
+    }
+
+    public int getSchaal() {
+        return schaal;
+    }
+
+    public void setSchaal(int schaal) {
+        this.schaal = schaal;
     }
 }
