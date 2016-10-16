@@ -1,10 +1,9 @@
-package nl.atos.ps.noord.testapp.urenverantwoording;
+package nl.atos.ps.noord.testapp.urenverantwoording.pojo;
 
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 
 /**
- * Created by nerom on 3-8-2016.
+ * Created by Vincent Free on 3-8-2016.
  */
 public class VerantwoordingsData {
 
@@ -21,22 +20,19 @@ public class VerantwoordingsData {
 
     private int zaterdag;
     private int zondag;
+    private int lunch;
+    private int overwerken;
+    private int schaal;
+
 
     //@NotNull
     @Size(min=2, max=30)
     private String name;
 
-    public VerantwoordingsData() {}
-
-    /*public VerantwoordingsData(int maandag, int dinsdag, int woensdag, int donderdag, int vrijdag, int zaterdag, int zondag) {
-        this.maandag = maandag;
-        this.dinsdag = dinsdag;
-        this.woensdag = woensdag;
-        this.donderdag = donderdag;
-        this.vrijdag = vrijdag;
-        this.zaterdag = zaterdag;
-        this.zondag = zondag;
-    }*/
+    //@NotNull
+    @DecimalMin("1")
+    @DecimalMax("52")
+    private int weeknumber;
 
     public int getMaandag() {
         return maandag;
@@ -100,5 +96,37 @@ public class VerantwoordingsData {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public int getWeeknumber() {
+        return weeknumber;
+    }
+
+    public void setWeeknumber(int weeknumber) {
+        this.weeknumber = weeknumber;
+    }
+
+    public int getLunch() {
+        return lunch;
+    }
+
+    public void setLunch(int lunch) {
+        this.lunch = lunch;
+    }
+
+    public int getOverwerken() {
+        return overwerken;
+    }
+
+    public void setOverwerken(int overwerken) {
+        this.overwerken = overwerken;
+    }
+
+    public int getSchaal() {
+        return schaal;
+    }
+
+    public void setSchaal(int schaal) {
+        this.schaal = schaal;
     }
 }

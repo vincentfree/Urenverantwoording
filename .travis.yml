@@ -1,0 +1,7 @@
+language: java
+jdk:
+  - oraclejdk8
+  #- oraclejdk7
+#addons:
+#  sauce_connect:
+#    sauce_connect: true
