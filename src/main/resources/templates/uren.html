@@ -80,7 +80,7 @@
                         Error</p>
                     <br/>
                     <div class="input-group">
-                        <span class="input-group-addon" id="week">Schaal</span>
+                        <span class="input-group-addon" id="schaal">Schaal</span>
                         <input type="number" th:field="*{schaal}" class="form-control" placeholder="schaal"
                                aria-describedby="schaal"
                                required="required"/>
@@ -167,7 +167,7 @@
                         </div>
                         <div class="row">
                             <div class="col-sm-offset-1 col-sm-4">
-                                <button type="submit" class="btn btn-primary btn-lg">Indienen</button>
+                                <button id="indienen" type="submit" class="btn btn-primary btn-lg">Indienen</button>
                                 <button type="button" class="btn btn-info btn-lg"
                                         data-toggle="modal" data-target="#myModal">Overzicht
                                 </button>
@@ -233,55 +233,51 @@
             <div class="col-lg-12">
                 <table class="table table-hover">
                     <thead>
-                    <th>Naam: <span th:text="${name}">no name</span></th>
-                    <th>Week nr: <span th:text="${weeknumber}">no week</span></th>
+                    <th>Naam: <span id="tableName" th:text="${name}">no name</span></th>
+                    <th>Week nr: <span id="tableWeek" th:text="${weeknumber}">no week</span></th>
                     </thead>
                     <tfoot>
                     <tr>
                         <td><strong>Lunch vergoeding</strong></td>
-                        <td><span th:text="${lunch}">no lunch value</span></td>
+                        <td><span id="tableLunch" th:text="${lunch}">no lunch value</span></td>
                     </tr>
                     <tr>
                         <td><strong>Overgewerkte uren</strong></td>
-                        <td><span th:text="${overwerken}">no overwork hours</span></td>
+                        <td><span id="tableOverwerk" th:text="${overwerken}">no overwork hours</span></td>
                     </tr>
                     <tr class="info">
                         <td><strong>Totale kosten</strong></td>
-                        <td><span th:text="${totaal}">no total costs</span></td>
+                        <td><span id="tableTotaal" th:text="${totaal}">no total costs</span></td>
                     </tr>
                     </tfoot>
                     <tbody>
                     <tr>
                         <td>Maandag</td>
-                        <td><span th:text="${maandag}">no hours</span></td>
+                        <td><span id="tableMaandag" th:text="${maandag}">no hours</span></td>
                     </tr>
                     <tr>
                         <td>Dinsdag</td>
-                        <td><span th:text="${dinsdag}">no hours</span></td>
+                        <td><span id="tableDinsdag" th:text="${dinsdag}">no hours</span></td>
                     </tr>
                     <tr>
                         <td>Woensdag</td>
-                        <td><span th:text="${woensdag}">no hours</span></td>
+                        <td><span id="tableWoensdag" th:text="${woensdag}">no hours</span></td>
                     </tr>
                     <tr>
                         <td>Donderdag</td>
-                        <td><span th:text="${donderdag}">no hours</span></td>
+                        <td><span id="tableDonderdag" th:text="${donderdag}">no hours</span></td>
                     </tr>
                     <tr>
                         <td>Vrijdag</td>
-                        <td><span th:text="${vrijdag}">no hours</span></td>
+                        <td><span id="tableVrijdag" th:text="${vrijdag}">no hours</span></td>
                     </tr>
                     <tr>
                         <td>Zaterdag</td>
-                        <td><span th:text="${zaterdag}">no hours</span></td>
+                        <td><span id="tableZaterdag" th:text="${zaterdag}">no hours</span></td>
                     </tr>
                     <tr>
                         <td>Zondag</td>
-                        <td><span th:text="${zondag}">no hours</span></td>
-                    </tr>
-                    <tr>
-                        <td>Totale uren</td>
-                        <td><span th:text="${zondag}">no hours</span></td>
+                        <td><span id="tableZondag" th:text="${zondag}">no hours</span></td>
                     </tr>
                     </tbody>
                 </table>
