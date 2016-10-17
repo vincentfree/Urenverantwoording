@@ -14,18 +14,23 @@ Functionaliteit: Uren berekening
 
   Abstract Scenario: Een medewerker vult verscheidene weken in.
     Stel Ik ben ingelogd als medewerker met schaal <schaal>
+    En Ik wil voor week "<week>" mijn uren invullen
     Als Ik "<maandag>" uren voor maandag invul
     En Ik "<dinsdag>" uren voor dinsdag invul
-    En Ik " <woensdag>" uren voor woensdag invul
+    En Ik "<woensdag>" uren voor woensdag invul
     En Ik "<donderdag>" uren voor donderdag invul
     En Ik "<vrijdag>" uren voor vrijdag invul
     En Ik "<zaterdag>" uren voor zaterdag invul
     En Ik "<zondag>" uren voor zondag invul
     Dan Dien ik het formulier in
     En Verwacht ik dat de lunch vergoeding "<lunchvergoeding>" bedraagt
-    En De vergoeding voor het overwerken "<overwerkvergoeding>" bedraagt
+    En De vergoeding voor het overwerken "<overwerkuren>" bedraagt
     En Het totale bedrag op "<totaal>" uitkomt
 
     Voorbeelden:
-      | schaal | maandag | dinsdag | woensdag | donderdag | vrijdag | zaterdag | zondag | lunchvergoeding | overwerkvergoeding | totaal |
-      | 10     | 8       | 8       | 8        | 8         | 8       | 0        | 0      | 0               | 0                  | 0      |
+      | schaal | week | maandag | dinsdag | woensdag | donderdag | vrijdag | zaterdag | zondag | lunchvergoeding | overwerkuren | totaal |
+      | 10     | 15   | 9       | 8       | 8        | 8         | 8       | 0        | 0      | 0               | 1            | 0      |
+      | 10     | 8    | 8       | 8       | 8        | 8         | 8       | 1        | 0      | 15              | 1            | 15     |
+      | 10     | 32   | 12      | 8       | 8        | 8         | 8       | 0        | 0      | 0               | 4            | 0      |
+      | 10     | 21   | 0       | 0       | 0        | 0         | 0       | 7        | 7      | 30              | 0            | 30     |
+      | 10     | 42   | 13      | 8       | 8        | 8         | 8       | 2        | 2      | 45              | 9            | 165    |

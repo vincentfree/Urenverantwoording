@@ -21,7 +21,7 @@ public class UrenStepdefs {
     @Stel("^Ik ben ingelogd als medewerker met schaal (\\d+)$")
     public void ikBenIngelogdAlsMedewerkerMetSchaal(int schaal) {
         urenPagina.gaNaarPagina("http://localhost:8080/");
-        urenPagina.vulGebruikersNaamIn("Jan de Boer");
+        urenPagina.vulGebruikersNaamIn("Vincent Free");
         urenPagina.vulSchaalIn(Integer.toString(schaal));
     }
 
@@ -103,4 +103,8 @@ public class UrenStepdefs {
         urenPagina.clickOpIndienen();
     }
 
+    @En("^Ik wil voor week \"([^\"]*)\" mijn uren invullen$")
+    public void ikWilVoorWeekMijnUrenInvullen(String week) {
+        urenPagina.vulWeekIn(week);
+    }
 }

@@ -62,7 +62,7 @@
                 <!--/*@thymesVar id="verantwoordingsData" type="nl.atos.ps.noord.testapp.urenverantwoording"*/-->
                 <form action="#" th:action="@{/}" th:object="${verantwoordingsData}" method="post">
                     <div class="input-group">
-                        <span class="input-group-addon" id="gebruikersnaam">Naam</span>
+                        <span class="input-group-addon">Naam</span>
                         <input type="text" th:field="*{name}" class="form-control"
                                placeholder="gebruikersnaam"
                                aria-describedby="gebruikersnaam" required="required"/>
@@ -70,7 +70,7 @@
                     <p class="bg-danger" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Week Error</p>
                     <br/>
                     <div class="input-group">
-                        <span class="input-group-addon" id="week">Week</span>
+                        <span class="input-group-addon">Week</span>
                         <input type="number" th:field="*{weeknumber}" class="form-control" placeholder="week"
                                aria-describedby="week"
                                required="required"/>
@@ -80,7 +80,7 @@
                         Error</p>
                     <br/>
                     <div class="input-group">
-                        <span class="input-group-addon" id="schaal">Schaal</span>
+                        <span class="input-group-addon">Schaal</span>
                         <input type="number" th:field="*{schaal}" class="form-control" placeholder="schaal"
                                aria-describedby="schaal"
                                required="required"/>
