@@ -62,11 +62,13 @@ public class UrenController {
     }
 
     private void getTotalCosts(VerantwoordingsData verantwoordingsData, Model model, WeeklyExtras extras) {
-        if (verantwoordingsData.getSchaal() < 18) {
+        /*if (verantwoordingsData.getSchaal() < 11) {
             model.addAttribute("totaal", (extras.overworkCosts() + extras.getLunchMoney()));
         } else {
             model.addAttribute("totaal", extras.getLunchMoney());
-        }
+        }*/
+
+        model.addAttribute("totaal", (extras.overworkCosts() + extras.getLunchMoney()));
     }
 
     @RequestMapping(value = "/results", method = RequestMethod.GET)
