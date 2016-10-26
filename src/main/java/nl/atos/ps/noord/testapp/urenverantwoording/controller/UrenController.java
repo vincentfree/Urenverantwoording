@@ -65,7 +65,7 @@ public class UrenController {
         if (verantwoordingsData.getSchaal() < 18) {
             model.addAttribute("totaal", (extras.overworkCosts() + extras.getLunchMoney()));
         } else {
-            model.addAttribute("totaal", 0);
+            model.addAttribute("totaal", extras.getLunchMoney());
         }
     }
 
