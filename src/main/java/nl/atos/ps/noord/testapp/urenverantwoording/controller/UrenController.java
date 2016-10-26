@@ -41,7 +41,7 @@ public class UrenController {
             model.addAttribute("weeknumber", verantwoordingsData.getWeeknumber());
             model.addAttribute("schaal", verantwoordingsData.getSchaal());
             model.addAttribute("lunch", extras.getLunchMoney());
-            model.addAttribute("overwerken", extras.getOverWorkHours());
+            model.addAttribute("overwerken", extras.getOverworkVergoeding(verantwoordingsData.getSchaal()));
             //TODO weekend uren toevoegen aan vergoeding
             getTotalCosts(verantwoordingsData, model, extras);
 
@@ -62,13 +62,9 @@ public class UrenController {
     }
 
     private void getTotalCosts(VerantwoordingsData verantwoordingsData, Model model, WeeklyExtras extras) {
-        /*if (verantwoordingsData.getSchaal() < 11) {
-            model.addAttribute("totaal", (extras.overworkCosts() + extras.getLunchMoney()));
-        } else {
-            model.addAttribute("totaal", extras.getLunchMoney());
-        }*/
 
-        model.addAttribute("totaal", (extras.overworkCosts() + extras.getLunchMoney()));
+        //model.addAttribute("totaal", (extras.getOverworkVergoeding(verantwoordingsData.getSchaal()) + extras.getLunchMoney()));
+        model.addAttribute("totaal", (extras.getOverworkVergoeding() + extras.getLunchMoney()));
     }
 
     @RequestMapping(value = "/results", method = RequestMethod.GET)
