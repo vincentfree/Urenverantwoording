@@ -95,7 +95,7 @@ public class UrenStepdefs {
 
     @En("^Het totale bedrag op \"([^\"]*)\" uitkomt$")
     public void hetTotaleBedragOpUitkomt(String totaal) {
-        Assert.assertTrue(urenPagina.checkTotaalWaarde(totaal));
+        Assert.assertTrue("Uren komen niet overeen.",urenPagina.checkTotaalWaarde(totaal));
     }
 
     @Dan("^Dien ik het formulier in$")

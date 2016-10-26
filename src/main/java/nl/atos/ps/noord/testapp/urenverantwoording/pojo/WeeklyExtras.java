@@ -22,9 +22,22 @@ public class WeeklyExtras {
     }
 
     public int getOverWorkHours() {
-        if (overWorkHours>40)
-        return overWorkHours-40;
+        if (overWorkHours>45)
+        return overWorkHours-45;
         else return 0;
+    }
+
+    public int getOverworkVergoeding() {
+            return (getOverWorkHours()*30);
+
+    }
+    public int getOverworkVergoeding(int schaal) {
+        if(schaal<11) {
+            return (getOverWorkHours() * 30);
+        } else{
+            return 0;
+        }
+
     }
 
     public void setOverWorkHours(int overWorkHours) {

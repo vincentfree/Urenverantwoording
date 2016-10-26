@@ -24,13 +24,14 @@ Functionaliteit: Uren berekening
     En Ik "<zondag>" uren voor zondag invul
     Dan Dien ik het formulier in
     En Verwacht ik dat de lunch vergoeding "<lunchvergoeding>" bedraagt
-    En De vergoeding voor het overwerken "<overwerkuren>" bedraagt
+    En De vergoeding voor het overwerken "<overwerkvergoeding>" bedraagt
     En Het totale bedrag op "<totaal>" uitkomt
 
     Voorbeelden:
-      | schaal | week | maandag | dinsdag | woensdag | donderdag | vrijdag | zaterdag | zondag | lunchvergoeding | overwerkuren | totaal |
-      | 10     | 15   | 9       | 8       | 8        | 8         | 8       | 0        | 0      | 0               | 1            | 0      |
-      | 10     | 8    | 8       | 8       | 8        | 8         | 8       | 1        | 0      | 15              | 1            | 15     |
-      | 10     | 32   | 12      | 8       | 8        | 8         | 8       | 0        | 0      | 0               | 4            | 0      |
-      | 10     | 21   | 0       | 0       | 0        | 0         | 0       | 7        | 7      | 30              | 0            | 30     |
-      | 10     | 42   | 13      | 8       | 8        | 8         | 8       | 2        | 2      | 45              | 9            | 165    |
+      | schaal | week | maandag | dinsdag | woensdag | donderdag | vrijdag | zaterdag | zondag | lunchvergoeding | overwerkvergoeding | totaal |
+      | 10     | 15   | 9       | 8       | 8        | 8         | 8       | 0        | 0      | 0               | 0                  | 0      |
+      | 10     | 8    | 8       | 8       | 8        | 8         | 8       | 1        | 0      | 15              | 0                  | 15     |
+      | 10     | 32   | 12      | 8       | 8        | 10        | 8       | 0        | 0      | 0               | 30                 | 30     |
+      | 10     | 21   | 0       | 0       | 0        | 0         | 0       | 7        | 7      | 30              | 0                  | 30     |
+      | 10     | 42   | 13      | 8       | 8        | 8         | 8       | 2        | 2      | 45              | 120                | 165    |
+      #| 11     | 43   | 8       | 8       | 8        | 8         | 8       | 6        | 0      | 15              | 0                  | 15     |
