@@ -8,7 +8,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-
 import javax.validation.Valid;
 import java.util.HashMap;
 import java.util.Map;
@@ -42,8 +41,8 @@ public class UrenController {
             model.addAttribute("schaal", verantwoordingsData.getSchaal());
             model.addAttribute("lunch", extras.getLunchMoney());
             //TODO add new feature
-            //model.addAttribute("overwerken", extras.getOverworkVergoeding(verantwoordingsData.getSchaal()));
-            model.addAttribute("overwerken", extras.getOverworkVergoeding());
+            model.addAttribute("overwerken", extras.getOverworkVergoeding(verantwoordingsData.getSchaal()));
+            //model.addAttribute("overwerken", extras.getOverworkVergoeding());
             getTotalCosts(verantwoordingsData, model, extras);
 
         } else {
@@ -65,8 +64,8 @@ public class UrenController {
     private void getTotalCosts(VerantwoordingsData verantwoordingsData, Model model, WeeklyExtras extras) {
 
         //TODO add new feature
-        //model.addAttribute("totaal", (extras.getOverworkVergoeding(verantwoordingsData.getSchaal()) + extras.getLunchMoney()));
-        model.addAttribute("totaal", (extras.getOverworkVergoeding() + extras.getLunchMoney()));
+        model.addAttribute("totaal", (extras.getOverworkVergoeding(verantwoordingsData.getSchaal()) + extras.getLunchMoney()));
+        //model.addAttribute("totaal", (extras.getOverworkVergoeding() + extras.getLunchMoney()));
     }
 
     @RequestMapping(value = "/results", method = RequestMethod.GET)
