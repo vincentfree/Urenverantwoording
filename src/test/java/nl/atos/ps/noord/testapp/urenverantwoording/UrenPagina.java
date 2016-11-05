@@ -1,14 +1,10 @@
 package nl.atos.ps.noord.testapp.urenverantwoording;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.util.concurrent.TimeUnit;
 
 /**
  * Created by nerom on 16-10-2016.
@@ -23,51 +19,51 @@ public class UrenPagina {
     }
     
     @FindBy(id = "schaal")
-    WebElement schaalLocatie;
+    private WebElement schaalLocatie;
     @FindBy(id = "name")
-    WebElement naamLocatie;
+    private WebElement naamLocatie;
     @FindBy(id = "weeknumber")
-    WebElement weekLocatie;
+    private WebElement weekLocatie;
     @FindBy(id = "maandag")
-    WebElement maandagInvoerLocatie;
+    private WebElement maandagInvoerLocatie;
     @FindBy(id = "dinsdag")
-    WebElement dinsdagInvoerLocatie;
+    private WebElement dinsdagInvoerLocatie;
     @FindBy(id = "woensdag")
-    WebElement woensdagInvoerLocatie;
+    private WebElement woensdagInvoerLocatie;
     @FindBy(id = "donderdag")
-    WebElement donderdagInvoerLocatie;
+    private WebElement donderdagInvoerLocatie;
     @FindBy(id = "vrijdag")
-    WebElement vrijdagInvoerLocatie;
+    private WebElement vrijdagInvoerLocatie;
     @FindBy(id = "zaterdag")
-    WebElement zaterdagInvoerLocatie;
+    private WebElement zaterdagInvoerLocatie;
     @FindBy(id = "zondag")
-    WebElement zondagInvoerLocatie;
+    private WebElement zondagInvoerLocatie;
     @FindBy(id = "indienen")
-    WebElement indienenLocatie;
+    private WebElement indienenLocatie;
     @FindBy(id = "tableMaandag")
-    WebElement maandagTabelLocatie;
+    private WebElement maandagTabelLocatie;
     @FindBy(id = "tableDinsdag")
-    WebElement dinsdagTabelLocatie;
+    private WebElement dinsdagTabelLocatie;
     @FindBy(id = "tableWoensdag")
-    WebElement woensdagTabelLocatie;
+    private WebElement woensdagTabelLocatie;
     @FindBy(id = "tableDonderdag")
-    WebElement donderdagTabelLocatie;
+    private WebElement donderdagTabelLocatie;
     @FindBy(id = "tableVrijdag")
-    WebElement vrijdagTabelLocatie;
+    private WebElement vrijdagTabelLocatie;
     @FindBy(id = "tableZaterdag")
-    WebElement zaterdagTabelLocatie;
+    private WebElement zaterdagTabelLocatie;
     @FindBy(id = "tableZondag")
-    WebElement zondagTabelLocatie;
+    private WebElement zondagTabelLocatie;
     @FindBy(id = "tableName")
-    WebElement naamTabelLocatie;
+    private WebElement naamTabelLocatie;
     @FindBy(id = "tableWeek")
-    WebElement weekTabelLocatie;
+    private WebElement weekTabelLocatie;
     @FindBy(id = "tableLunch")
-    WebElement lunchTabelLocatie;
+    private WebElement lunchTabelLocatie;
     @FindBy(id = "tableOverwerk")
-    WebElement overwerkTabelLocatie;
+    private WebElement overwerkTabelLocatie;
     @FindBy(id = "tableTotaal")
-    WebElement totaalTabelLocatie;
+    private WebElement totaalTabelLocatie;
 
     public UrenPagina vulGebruikersNaamIn(String naam) {
         wait.until(ExpectedConditions.visibilityOf(naamLocatie));
